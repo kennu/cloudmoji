@@ -7,7 +7,12 @@
 \s+     /* skip whitespace */
 "🌐"    return 'STACK';
 "🪪"    return 'NAME';
+"🪣"    return 'BUCKET';
 "🗄️"    return 'TABLE';
+"🔑"    return 'KEY';
+"❗"    return 'REQ_ATTR';
+"❓"    return "OPT_ATTR";
+"📅"    return "DATE";
 "🎄"    return 'API';
 "🍭"    return 'ROUTE';
 "🙈"    return 'COMMENT';
@@ -27,9 +32,9 @@ expressions
 
 el
   : e EOL el
-    {$$ = '(lines ' + $1 + ' \n ' + $3 + ')';}
+    {$$ = $1 + '\n' + $3;}
   | e EOL
-    {$$ = '(line ' + $1 + ')';}
+    {$$ = $1;}
   ;
 
 e
@@ -39,6 +44,18 @@ e
     {$$ = '(name ' + $2 + ')';}
   | COMMENT WORD
     {$$ = '(comment ' + $2 + ')';}
+  | BUCKET WORD
+    {$$ = '(bucket ' + $2 + ')';}
+  | TABLE WORD
+    {$$ = '(table ' + $2 + ')';}
+  | KEY WORD WORD
+    {$$ = '(key ' + $2 + ')';}
+  | REQ_ATTR WORD WORD
+    {$$ = '(reqattr ' + $2 + ')';}
+  | OPT_ATTR WORD WORD
+    {$$ = '(optattr ' + $2 + ')';}
+  | DATE WORD WORD
+    {$$ = '(date ' + $2 + ')';}
   | API WORD
     {$$ = '(api ' + $2 + ')';}
   | ROUTE WORD WORD

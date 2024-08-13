@@ -72,12 +72,12 @@
   }
 */
 var cloudmoji = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,6],$V3=[1,7],$V4=[1,8];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,6],$V3=[1,7],$V4=[1,8],$V5=[1,9],$V6=[1,10],$V7=[1,11],$V8=[1,12],$V9=[1,13],$Va=[1,14];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"expressions":3,"el":4,"EOF":5,"e":6,"EOL":7,"STACK":8,"WORD":9,"NAME":10,"COMMENT":11,"API":12,"ROUTE":13,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",7:"EOL",8:"STACK",9:"WORD",10:"NAME",11:"COMMENT",12:"API",13:"ROUTE"},
-productions_: [0,[3,2],[4,3],[4,2],[6,2],[6,2],[6,2],[6,2],[6,3]],
+symbols_: {"error":2,"expressions":3,"el":4,"EOF":5,"e":6,"EOL":7,"STACK":8,"WORD":9,"NAME":10,"COMMENT":11,"BUCKET":12,"TABLE":13,"KEY":14,"REQ_ATTR":15,"OPT_ATTR":16,"DATE":17,"API":18,"ROUTE":19,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",7:"EOL",8:"STACK",9:"WORD",10:"NAME",11:"COMMENT",12:"BUCKET",13:"TABLE",14:"KEY",15:"REQ_ATTR",16:"OPT_ATTR",17:"DATE",18:"API",19:"ROUTE"},
+productions_: [0,[3,2],[4,3],[4,2],[6,2],[6,2],[6,2],[6,2],[6,2],[6,3],[6,3],[6,3],[6,3],[6,2],[6,3]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -87,10 +87,10 @@ case 1:
 console.log($$[$0-1]); return $$[$0-1];
 break;
 case 2:
-this.$ = '(lines ' + $$[$0-2] + ' \n ' + $$[$0] + ')';
+this.$ = $$[$0-2] + '\n' + $$[$0];
 break;
 case 3:
-this.$ = '(line ' + $$[$0-1] + ')';
+this.$ = $$[$0-1];
 break;
 case 4:
 this.$ = '(stack ' + $$[$0] + ')';
@@ -102,15 +102,33 @@ case 6:
 this.$ = '(comment ' + $$[$0] + ')';
 break;
 case 7:
-this.$ = '(api ' + $$[$0] + ')';
+this.$ = '(bucket ' + $$[$0] + ')';
 break;
 case 8:
+this.$ = '(table ' + $$[$0] + ')';
+break;
+case 9:
+this.$ = '(key ' + $$[$0-1] + ')';
+break;
+case 10:
+this.$ = '(reqattr ' + $$[$0-1] + ')';
+break;
+case 11:
+this.$ = '(optattr ' + $$[$0-1] + ')';
+break;
+case 12:
+this.$ = '(date ' + $$[$0-1] + ')';
+break;
+case 13:
+this.$ = '(api ' + $$[$0] + ')';
+break;
+case 14:
 this.$ = '(route ' + $$[$0-1] + ')';
 break;
 }
 },
-table: [{3:1,4:2,6:3,8:$V0,10:$V1,11:$V2,12:$V3,13:$V4},{1:[3]},{5:[1,9]},{7:[1,10]},{9:[1,11]},{9:[1,12]},{9:[1,13]},{9:[1,14]},{9:[1,15]},{1:[2,1]},{4:16,5:[2,3],6:3,8:$V0,10:$V1,11:$V2,12:$V3,13:$V4},{7:[2,4]},{7:[2,5]},{7:[2,6]},{7:[2,7]},{9:[1,17]},{5:[2,2]},{7:[2,8]}],
-defaultActions: {9:[2,1],11:[2,4],12:[2,5],13:[2,6],14:[2,7],16:[2,2],17:[2,8]},
+table: [{3:1,4:2,6:3,8:$V0,10:$V1,11:$V2,12:$V3,13:$V4,14:$V5,15:$V6,16:$V7,17:$V8,18:$V9,19:$Va},{1:[3]},{5:[1,15]},{7:[1,16]},{9:[1,17]},{9:[1,18]},{9:[1,19]},{9:[1,20]},{9:[1,21]},{9:[1,22]},{9:[1,23]},{9:[1,24]},{9:[1,25]},{9:[1,26]},{9:[1,27]},{1:[2,1]},{4:28,5:[2,3],6:3,8:$V0,10:$V1,11:$V2,12:$V3,13:$V4,14:$V5,15:$V6,16:$V7,17:$V8,18:$V9,19:$Va},{7:[2,4]},{7:[2,5]},{7:[2,6]},{7:[2,7]},{7:[2,8]},{9:[1,29]},{9:[1,30]},{9:[1,31]},{9:[1,32]},{7:[2,13]},{9:[1,33]},{5:[2,2]},{7:[2,9]},{7:[2,10]},{7:[2,11]},{7:[2,12]},{7:[2,14]}],
+defaultActions: {15:[2,1],17:[2,4],18:[2,5],19:[2,6],20:[2,7],21:[2,8],26:[2,13],28:[2,2],29:[2,9],30:[2,10],31:[2,11],32:[2,12],33:[2,14]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -593,22 +611,32 @@ case 2:return 8;
 break;
 case 3:return 10;
 break;
-case 4:return 'TABLE';
+case 4:return 12;
 break;
-case 5:return 12;
+case 5:return 13;
 break;
-case 6:return 13;
+case 6:return 14;
 break;
-case 7:return 11;
+case 7:return 15;
 break;
-case 8:return 9;
+case 8:return "OPT_ATTR";
 break;
-case 9:return 5;
+case 9:return "DATE";
+break;
+case 10:return 18;
+break;
+case 11:return 19;
+break;
+case 12:return 11;
+break;
+case 13:return 9;
+break;
+case 14:return 5;
 break;
 }
 },
-rules: [/^(?:\n+)/,/^(?:\s+)/,/^(?:🌐)/,/^(?:🪪)/,/^(?:🗄️)/,/^(?:🎄)/,/^(?:🍭)/,/^(?:🙈)/,/^(?:[\w_/{}-]+)/,/^(?:$)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9],"inclusive":true}}
+rules: [/^(?:\n+)/,/^(?:\s+)/,/^(?:🌐)/,/^(?:🪪)/,/^(?:🪣)/,/^(?:🗄️)/,/^(?:🔑)/,/^(?:❗)/,/^(?:❓)/,/^(?:📅)/,/^(?:🎄)/,/^(?:🍭)/,/^(?:🙈)/,/^(?:[\w_/{}-]+)/,/^(?:$)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],"inclusive":true}}
 });
 return lexer;
 })();

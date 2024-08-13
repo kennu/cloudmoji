@@ -4,7 +4,9 @@
   "description": "Cloudmoji",
   "main": "index.js",
   "scripts": {
-    "build": ""
+    "parser": "jison cloudmoji.jison",
+    "compile": "node cloudmoji.js demo1.cmj",
+    "build": "npm run parser && npm run compile"
   },
   "keywords": [],
   "author": "Kenneth Falck <kennu@iki.fi>",
