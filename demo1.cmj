@@ -1,0 +1,10 @@
+🌐DemoStack
+    🪪demo-stack-name
+
+🎄DemoAPI
+    🍭GET /
+    🍭GET /messages
+    🍭POST /messages
+    🍭GET /messages/{messageId}
+    🍭PUT /messages/{messageId}
+    🍭DELETE /messages/{messageId}
